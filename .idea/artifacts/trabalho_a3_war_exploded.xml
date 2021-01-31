@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="trabalho_a3:war exploded">
+    <output-path>$PROJECT_DIR$/target/trabalho_a3-1.0</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>trabalho_a3</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="trabalho_a3" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-client:1.19.4" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.19.4" />
+          <element id="library" level="project" name="Maven: javax.ws.rs:jsr311-api:1.1.1" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/trabalho_a3-1.0/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="trabalho_a3/web/Web" />
+    </root>
+  </artifact>
+</component>

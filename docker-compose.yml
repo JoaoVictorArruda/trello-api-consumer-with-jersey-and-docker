@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  joao_arruda_lucas_fusinato_tomcat:
+    image: tomcat:9.0.1-jre8-alpine
+    ports:
+    - 8080:8080
+    volumes: 
+      - ./target/trabalho_a3-1.0.war:/usr/local/tomcat/webapps/trabalho_a3.war
+    command: catalina.sh run
+ 
