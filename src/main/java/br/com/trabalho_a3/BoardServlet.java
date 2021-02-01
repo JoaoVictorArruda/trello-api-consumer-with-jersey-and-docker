@@ -1,6 +1,5 @@
 package br.com.trabalho_a3;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,9 @@ import com.sun.jersey.api.client.WebResource;
 @WebServlet(name = "BoardServlet", value = "/board-servlet")
 public class BoardServlet extends DefaultServlet {
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        super.doGet(request, response);
         response.setContentType("application/json");
         Client c = Client.create();
         WebResource wr = c.resource(baseUrl+"members/me/boards?key="+key+"&token="+token);
@@ -25,6 +26,7 @@ public class BoardServlet extends DefaultServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        super.doPost(request, response);
         response.setContentType("application/json");
         Client c = Client.create();
         String nome = request.getParameter("nome");

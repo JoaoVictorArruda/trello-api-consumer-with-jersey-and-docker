@@ -26,15 +26,23 @@
 
     </style>
 </head>
-<body onload="loadBoard()" id="body">
+<body id="body">
+    <div>
+        <label for="key">Key: </label>
+        <input placeholder="key" id="key">
+        <label for="token">Key: </label>
+        <input placeholder="token" id="token">
+        <button type="button" class="btn btn-success" onclick="loadBoard({key: document.querySelector('#key').value, token: document.querySelector('#token').value})">CONFIRMAR</button>
+    </div>
+    <br>
     <div aria-label="" class="content form-select">
         <label for="quadros">Selecione um quadro: </label>
         <select onchange="" id="quadros" name="quadros"></select>
-        <button type="button" class="btn btn-success" onclick="redirectBoard({id:document.getElementById('quadros').value, nome:document.getElementById('quadros').options[document.getElementById('quadros').selectedIndex].text})">Selecionar</button>
-        <button type="button" class="btn btn-danger" onclick="postBoardDelete({nome:document.getElementById('quadros').value})">Excluir quadro</button>
+        <button type="button" class="btn btn-success" onclick="redirectBoard({id:document.getElementById('quadros').value, nome:document.getElementById('quadros').options[document.getElementById('quadros').selectedIndex].text, key: document.querySelector('#key').value, token: document.querySelector('#token').value, 'shortUrl': document.getElementById('quadros').options[document.getElementById('quadros').selectedIndex].shortUrl})">Selecionar</button>
+        <button type="button" class="btn btn-danger" onclick="postBoardDelete({nome:document.getElementById('quadros').value, key: document.querySelector('#key').value, token: document.querySelector('#token').value})">Excluir quadro</button>
         <span>ou crie um novo: </span>
         <input placeholder="nome" id="newQuadro">
-        <button type="button" class="btn btn-primary" onclick="postBoard({nome:document.getElementById('newQuadro').value})">Adicionar novo quadro</button>
+        <button type="button" class="btn btn-primary" onclick="postBoard({nome:document.getElementById('newQuadro').value, key: document.querySelector('#key').value, token: document.querySelector('#token').value})">Adicionar novo quadro</button>
     </div>
 </body>
 </html>

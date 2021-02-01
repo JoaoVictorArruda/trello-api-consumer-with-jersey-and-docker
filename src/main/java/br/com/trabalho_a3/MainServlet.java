@@ -13,6 +13,7 @@ import com.sun.jersey.api.client.WebResource;
 public class MainServlet extends DefaultServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        super.doGet(request, response);
         response.setContentType("application/json");
         WebResource wr;
         Client c = Client.create();
@@ -28,13 +29,6 @@ public class MainServlet extends DefaultServlet {
             String json = wr.get(String.class);
             out.println(json);
         }
-//        response.setContentType("application/json");
-//        String id = request.getParameter("id");
-//        Client c = Client.create();
-//        WebResource wr = c.resource(baseUrl+"lists/"+id+"?key="+key+"&token="+token);
-//        String json = wr.get(String.class);
-//        PrintWriter out = response.getWriter();
-//        out.println(json);
     }
 
     public void destroy() {

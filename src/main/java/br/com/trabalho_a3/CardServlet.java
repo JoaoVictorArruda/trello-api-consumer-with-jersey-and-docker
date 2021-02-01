@@ -15,6 +15,7 @@ public class CardServlet extends DefaultServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        super.doPost(request, response);
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         Client c = Client.create();
