@@ -12,6 +12,7 @@ function loadBoard(parametros) {
             let opt = document.createElement('option');
             opt.value = response[i].id;
             opt.innerHTML = response[i].name;
+            opt.shortUrl = response[i].shortUrl;
             selectQuadros.appendChild(opt);
         }
     }).fail(function(error) {
@@ -57,7 +58,7 @@ function loadList(parametros) {
         const nome = prompt('Digite o nome da nova list:');
         $.ajax({
             url: packageName + "/list-servlet",
-            data: {idBoard: botao.idBoard, nome: nome},
+            data: {idBoard: botao.idBoard, nome: nome, 'key': key, 'token': token},
             type: "POST",
         }).done(function(response) {
             window.location.reload(true);
@@ -69,7 +70,7 @@ function loadList(parametros) {
     const onClickDeleteList = (mouseEvent) => {
         if(confirm('Voce quer excluir a lista selecionada?')) {
             const list = mouseEvent.target;
-            parametros = {delete: true, id: list.idList};
+            parametros = {delete: true, id: list.idList, 'key': key, 'token': token};
             $.ajax({
                 url: packageName + "/list-servlet",
                 type: "POST",
@@ -86,7 +87,7 @@ function loadList(parametros) {
         let list = event.target;
         $.ajax({
             url: packageName + "/card-servlet",
-            data: {idCard: draggedCard, idList: list.idList, move:true},
+            data: {idCard: draggedCard, idList: list.idList, move:true, 'key': key, 'token': token},
             type: "POST",
         }).done(function(response) {
             window.location.reload(true);
@@ -140,7 +141,7 @@ function loadCardsFromList(parametros) {
         const nome = prompt('Digite o nome do novo card:');
         $.ajax({
             url: packageName + "/card-servlet",
-            data: {list: botao.idList, nome: nome},
+            data: {list: botao.idList, nome: nome, 'key': key, 'token': token},
             type: "POST",
         }).done(function(response) {
             window.location.reload(true);
@@ -152,11 +153,10 @@ function loadCardsFromList(parametros) {
     const onClickDeleteCard = (mouseEvent) => {
         if(confirm('Voce quer excluir o card selecionado?')) {
             const card = mouseEvent.target;
-            parametros = {delete: true, id: card.idCard};
             $.ajax({
                 url: packageName + "/card-servlet",
                 type: "POST",
-                data: parametros
+                data: {delete: true, id: card.idCard, 'key': key, 'token': token}
             }).done(function(response) {
                 window.location.reload(true);
             }).fail(function(error) {
@@ -172,7 +172,7 @@ function loadCardsFromList(parametros) {
 
     $.ajax({
         url: packageName + "/main-servlet",
-        data: {list: parametros.id}
+        data: {list: parametros.id, 'key': key, 'token': token}
     }).done(function(response) {
         let cardList = document.createElement('ul');
         cardList.classList.add('list-items');

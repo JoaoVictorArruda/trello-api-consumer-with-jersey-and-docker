@@ -6,10 +6,12 @@
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const id = urlParams.get('id')
-    const nome = urlParams.get('nome')
-
-    loadList({'id': id});
+    const id = urlParams.get('id');
+    const nome = urlParams.get('nome');
+    const key = urlParams.get('key');
+    const token = urlParams.get('token');
+    const shortUrl = urlParams.get('shortUrl');
+    loadList({'id': id, 'key': key, 'token': token});
 </script>
 
 <!-- Masthead -->
@@ -17,7 +19,7 @@
 
     <div class="boards-menu">
 
-        <button onclick="window.location.href = packageName+ '/index.jsp'" class="boards-btn btn"><i class="fab fa-trello boards-btn-icon"></i>Boards</button>
+        <button onclick="window.location.href = packageName+ '/index.jsp'" class="boards-btn btn"><i class="fab fa-trello boards-btn-icon"></i>Voltar</button>
 
         <div class="board-search">
             <input type="search" id="board-search" class="board-search-input" aria-label="Board Search">
@@ -26,11 +28,13 @@
 
     </div>
 
-    <div class="logo">
+        <div class="logo" id="logo">
 
-        <h1><i class="fab fa-trello logo-icon" aria-hidden="true"></i>Trello</h1>
+    <a target="_blank" id="link" rel="noopener noreferrer" href="">
+            <h1><i class="fab fa-trello logo-icon" aria-hidden="true"></i>Trello</h1>
+    </a>
 
-    </div>
+        </div>
 
     <div class="user-settings">
 
@@ -72,5 +76,6 @@
 <script>
 
     document.getElementById('board-search').value = nome;
+    document.getElementById('link').href = shortUrl;
 
 </script>
