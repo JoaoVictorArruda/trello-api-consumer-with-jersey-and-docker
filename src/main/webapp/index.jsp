@@ -44,5 +44,15 @@
         <input placeholder="nome" id="newQuadro">
         <button type="button" class="btn btn-primary" onclick="postBoard({nome:document.getElementById('newQuadro').value, key: document.querySelector('#key').value, token: document.querySelector('#token').value})">Adicionar novo quadro</button>
     </div>
+
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const key = urlParams.get('key');
+    const token = urlParams.get('token');
+    document.querySelector('#key').value = key;
+    document.querySelector('#token').value = token;
+    loadBoard({key: document.querySelector('#key').value, token: document.querySelector('#token').value})
+</script>
 </body>
 </html>
