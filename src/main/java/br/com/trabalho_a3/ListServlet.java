@@ -29,6 +29,7 @@ public class ListServlet extends DefaultServlet {
         } else {
             String idBoard = request.getParameter("idBoard");
             String name = request.getParameter("nome");
+            name = name.replace(' ', '_');
             WebResource wr = c.resource(baseUrl+"lists/?idBoard="+idBoard+"&pos=bottom"+"&key="+key+"&token="+token+"&name="+name);
             ClientResponse responsePost = wr.post(ClientResponse.class);
             json = responsePost.getEntity(String.class);

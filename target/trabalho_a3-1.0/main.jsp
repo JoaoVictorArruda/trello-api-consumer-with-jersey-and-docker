@@ -28,13 +28,13 @@
 
     </div>
 
-        <div class="logo" id="logo">
+    <div class="logo" id="logo">
 
-    <a target="_blank" id="link" rel="noopener noreferrer" href="">
+        <a target="_blank" id="link" rel="noopener noreferrer" href="">
             <h1><i class="fab fa-trello logo-icon" aria-hidden="true"></i>Trello</h1>
-    </a>
+        </a>
 
-        </div>
+    </div>
 
     <div class="user-settings">
 

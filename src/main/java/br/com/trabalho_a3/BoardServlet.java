@@ -30,6 +30,7 @@ public class BoardServlet extends DefaultServlet {
         response.setContentType("application/json");
         Client c = Client.create();
         String nome = request.getParameter("nome");
+        nome = nome.replace(' ', '_');
         PrintWriter out = response.getWriter();
         String json;
         String delete = request.getParameter("delete");

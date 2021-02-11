@@ -36,6 +36,7 @@ public class CardServlet extends DefaultServlet {
         } else {
             String idList = request.getParameter("list");
             String name = request.getParameter("nome");
+            name = name.replace(' ', '_');
             WebResource wr = c.resource(baseUrl+"cards/?idList="+idList+"&pos=bottom"+"&key="+key+"&token="+token+"&name="+name);
             ClientResponse responsePost = wr.post(ClientResponse.class);
             json = responsePost.getEntity(String.class);

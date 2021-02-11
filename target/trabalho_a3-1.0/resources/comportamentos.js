@@ -3,21 +3,34 @@ const packageName = '/trabalho_a3';
 let draggedCard;
 
 function loadBoard(parametros) {
-    $.ajax({
-        url: packageName + "/board-servlet",
-        data: parametros
-    }).done(function(response) {
-        let selectQuadros = document.querySelector("#quadros");
-        for (let i = 0; i < response.length; i++){
-            let opt = document.createElement('option');
-            opt.value = response[i].id;
-            opt.innerHTML = response[i].name;
-            opt.shortUrl = response[i].shortUrl;
-            selectQuadros.appendChild(opt);
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const key = urlParams.get('key');
+    const token = urlParams.get('token');
+    debugger;
+    if(key !== null && token !== null) {
+        $.ajax({
+            url: packageName + "/board-servlet",
+            data: parametros
+        }).done(function(response) {
+            let selectQuadros = document.querySelector("#quadros");
+            for (let i = 0; i < response.length; i++){
+                let opt = document.createElement('option');
+                opt.value = response[i].id;
+                opt.innerHTML = response[i].name;
+                opt.shortUrl = response[i].shortUrl;
+                selectQuadros.appendChild(opt);
+            }
+        }).fail(function(error) {
+            document.getElementById('body').innerHTML = error.responseText;
+        });
+    } else {
+        const inputKey = document.getElementById('key').value;
+        const inputToken = document.getElementById('token').value;
+        if(inputKey !== "" && inputToken !== "") {
+            window.location.href = packageName+ "/index.jsp?"+ $.param({'key': inputKey, 'token': inputToken});
         }
-    }).fail(function(error) {
-        document.getElementById('body').innerHTML = error.responseText;
-    });
+    }
 }
 
 function postBoard(parametros) {

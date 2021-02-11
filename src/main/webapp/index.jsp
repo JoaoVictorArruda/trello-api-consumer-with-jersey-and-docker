@@ -30,7 +30,7 @@
     <div>
         <label for="key">Key: </label>
         <input placeholder="key" id="key">
-        <label for="token">Key: </label>
+        <label for="token">Token: </label>
         <input placeholder="token" id="token">
         <button type="button" class="btn btn-success" onclick="loadBoard({key: document.querySelector('#key').value, token: document.querySelector('#token').value})">CONFIRMAR</button>
     </div>
